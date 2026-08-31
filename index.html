@@ -37,14 +37,12 @@
     <!-- HEADER / CABEÇALHO -->
     <header class="bg-white shadow-md sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-            <!-- Logo -->
+            <!-- Logo ABAPEC -->
             <div class="flex items-center space-x-3">
-                <div class="w-12 h-12 bg-blue-700 text-white rounded-full flex items-center justify-center font-bold text-xl">
-                    A
-                </div>
-                <div>
-                    <span class="text-2xl font-extrabold text-blue-900 tracking-tight">ABAPEC</span>
-                    <p class="text-xs text-gray-500 font-medium">Associação de Aposentados e Pensionistas</p>
+                <img src="img/logo-abapec.png" alt="Logo ABAPEC" class="h-14 w-auto object-contain">
+                <div class="hidden sm:block">
+                    <span class="text-xs text-gray-500 font-semibold block leading-tight">Associação de Aposentados e</span>
+                    <span class="text-xs text-gray-500 font-semibold block leading-tight">Pensionistas de Canoas</span>
                 </div>
             </div>
 
@@ -78,7 +76,7 @@
                 Cuidando do seu bem-estar há mais de 35 anos.
             </h1>
             <p class="text-lg md:text-xl font-light mb-8 text-blue-100">
-                Saúde de qualidade, atendimento prioritário e descontos exclusivos de até 50% em exames e consultas para você e sua família.
+                Saúde de qualidade, atendimento prioritário e descontos exclusivos de 30% a 50% em exames e consultas para você e sua família.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <a href="#associe-se" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4 rounded-xl shadow-lg transition transform hover:-translate-y-1">
@@ -91,25 +89,25 @@
         </div>
     </section>
 
-    <!-- FAICHA/CARROSSEL DE LOGOS DOS PRINCIPAIS CONVÊNIOS -->
-    <div class="bg-blue-900 py-4 overflow-hidden border-t border-b border-blue-800">
-        <div class="animate-marquee items-center space-x-12 text-white font-semibold opacity-80 text-sm tracking-wider uppercase">
-            <span>• Santa Casa de Misericórdia</span>
-            <span>• Hospital Regina</span>
-            <span>• Cardiocenter</span>
-            <span>• Multiclínica Palombini</span>
-            <span>• Laboratório Weinmann</span>
-            <span>• Laboratório Widal</span>
-            <span>• CEDICLIN</span>
-            <span>• BV Clean</span>
-            <span>• Clínica Previsa</span>
-            <!-- Repetição para efeito continuo -->
-            <span>• Santa Casa de Misericórdia</span>
-            <span>• Hospital Regina</span>
-            <span>• Cardiocenter</span>
-            <span>• Multiclínica Palombini</span>
-            <span>• Laboratório Weinmann</span>
-            <span>• Laboratório Widal</span>
+    <!-- FAIXA/CARROSSEL DE LOGOS DOS PRINCIPAIS CONVÊNIOS -->
+    <div class="bg-white py-6 overflow-hidden border-t border-b border-gray-200">
+        <div class="animate-marquee items-center space-x-12">
+            <img src="img/logo-acertmed.png" alt="Acertmed" class="h-12 w-auto object-contain grayscale hover:grayscale-0 transition">
+            <img src="img/logo-asbeviclin.png" alt="Asbeviclin" class="h-12 w-auto object-contain grayscale hover:grayscale-0 transition">
+            <img src="img/logo-cardiocenter.JPG" alt="Cardiocenter" class="h-12 w-auto object-contain grayscale hover:grayscale-0 transition">
+            <img src="img/logo-cec.png" alt="CEC Vacinas" class="h-12 w-auto object-contain grayscale hover:grayscale-0 transition">
+            <img src="img/logo-cediclin.png" alt="Cediclin" class="h-12 w-auto object-contain grayscale hover:grayscale-0 transition">
+            <img src="img/logo-coloprocto.png" alt="Coloprocto" class="h-12 w-auto object-contain grayscale hover:grayscale-0 transition">
+            <img src="img/logo-cot.png" alt="COT" class="h-12 w-auto object-contain grayscale hover:grayscale-0 transition">
+            <img src="img/logo-doctormed.png" alt="Doctormed" class="h-12 w-auto object-contain grayscale hover:grayscale-0 transition">
+            <img src="img/logo-ecotomo.png" alt="Ecotomo" class="h-12 w-auto object-contain grayscale hover:grayscale-0 transition">
+            
+            <!-- Repetição para o efeito contínuo -->
+            <img src="img/logo-acertmed.png" alt="Acertmed" class="h-12 w-auto object-contain grayscale hover:grayscale-0 transition">
+            <img src="img/logo-asbeviclin.png" alt="Asbeviclin" class="h-12 w-auto object-contain grayscale hover:grayscale-0 transition">
+            <img src="img/logo-cardiocenter.JPG" alt="Cardiocenter" class="h-12 w-auto object-contain grayscale hover:grayscale-0 transition">
+            <img src="img/logo-cec.png" alt="CEC Vacinas" class="h-12 w-auto object-contain grayscale hover:grayscale-0 transition">
+            <img src="img/logo-cediclin.png" alt="Cediclin" class="h-12 w-auto object-contain grayscale hover:grayscale-0 transition">
         </div>
     </div>
 
@@ -260,7 +258,6 @@
         enviado: false,
         submitForm() {
             this.enviado = true;
-            // Integração futura via Webhook / API
         }
     }">
         <div class="max-w-4xl mx-auto px-4">
@@ -380,8 +377,8 @@
     <footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8">
             <div>
-                <span class="text-2xl font-extrabold text-white">ABAPEC</span>
-                <p class="text-sm mt-2">Associação Beneficente dos Aposentados e Pensionistas de Canoas. Há mais de 35 anos promovendo saúde, descontos e qualidade de vida.</p>
+                <img src="img/logo-abapec.png" alt="Logo ABAPEC" class="h-14 w-auto object-contain bg-white p-2 rounded-lg mb-4">
+                <p class="text-sm">Associação Beneficente dos Aposentados e Pensionistas de Canoas. Há mais de 35 anos promovendo saúde, descontos e qualidade de vida.</p>
             </div>
             <div>
                 <h4 class="text-white font-bold mb-4">Links Rápidos</h4>
@@ -399,7 +396,7 @@
             </div>
         </div>
         <div class="max-w-7xl mx-auto px-4 mt-8 pt-8 border-t border-gray-800 text-center text-xs">
-          © 2026 ABAPEC - Todos os direitos reservados. | Desenvolvido por <span class="font-bold text-white">VETIX Tecnologia</span>
+            © 2026 ABAPEC - Todos os direitos reservados. | Desenvolvido por <span class="font-bold text-white">VETIX Tecnologia</span>
         </div>
     </footer>
 
