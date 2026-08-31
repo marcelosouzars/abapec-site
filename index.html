@@ -118,17 +118,17 @@
                 <span class="text-blue-600 font-bold uppercase tracking-wider text-sm">Nossa História & Propósito</span>
                 <h2 class="text-3xl font-extrabold text-gray-900 mt-2 mb-6">Tradição, agilidade e carinho com a sua saúde.</h2>
                 <p class="text-gray-600 mb-4">
-                    Fundada em 1987 na cidade de Canoas/RS, a **ABAPEC** conta hoje com mais de **11.000 associados**. Nosso objetivo sempre foi prover uma alternativa rápida, humana e acessível para que idosos e famílias não dependam da demora da rede pública de saúde.
+                    Fundada em 1987 na cidade de Canoas/RS, a <strong>ABAPEC</strong> conta hoje com mais de <strong>11.000 associados</strong>. Nosso objetivo sempre foi prover uma alternativa rápida, humana e acessível para que idosos e famílias não dependam da demora da rede pública de saúde.
                 </p>
                 <p class="text-gray-600 mb-4">
-                    Oferecemos atendimento prioritário com descontos expressivos de **30% a 50%** em exames laboratoriais, exames de imagem, consultas médicas com especialistas e redes parceiras de farmácias e serviços autônomos.
+                    Oferecemos atendimento prioritário com descontos expressivos de <strong>30% a 50%</strong> em exames laboratoriais, exames de imagem, consultas médicas com especialistas e redes parceiras de farmácias e serviços autônomos.
                 </p>
                 <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-600 mb-6">
                     <h4 class="font-bold text-blue-900 mb-1">Quem pode fazer parte?</h4>
                     <p class="text-xs text-blue-800">
-                        • **Aposentados e Pensionistas:** Acesso total aos benefícios.<br>
-                        • **Sócios Contribuintes:** Desde 2019, qualquer pessoa a partir de 25 anos pode se associar!<br>
-                        • **Dependentes:** Menores de 18 anos não pagam mensalidade. Dependentes especiais/portadores de deficiência severa mantêm o benefício sem limite de idade.
+                        • <strong>Aposentados e Pensionistas:</strong> Acesso total aos benefícios.<br>
+                        • <strong>Sócios Contribuintes:</strong> Desde 2019, qualquer pessoa a partir de 25 anos pode se associar!<br>
+                        • <strong>Dependentes:</strong> Menores de 18 anos não pagam mensalidade. Dependentes especiais/portadores de deficiência severa mantêm o benefício sem limite de idade.
                     </p>
                 </div>
             </div>
@@ -138,23 +138,165 @@
         </div>
     </section>
 
-    <!-- SEÇÃO CONVÊNIOS (COM BUSCA EM TEMPO REAL) -->
+    <!-- SEÇÃO CONVÊNIOS (COM BUSCA EM TEMPO REAL E DADOS ATUALIZADOS) -->
     <section id="convenios" class="py-16 bg-gray-100" x-data="{
         search: '',
         convenios: [
-            { nome: 'Santa Casa de Misericórdia', especialidade: 'Hospitalar / Atendimento Geral', cidade: 'Porto Alegre', fone: '(51) 3214-8000' },
-            { nome: 'Hospital Regina', especialidade: 'Hospitalar / Pronto Atendimento', cidade: 'Novo Hamburgo', fone: '(51) 3581-5100' },
-            { nome: 'Cardiocenter', especialidade: 'Cardiologia & Exames', cidade: 'Canoas', fone: '(51) 92001-4088' },
-            { nome: 'Multiclínica Palombini', especialidade: 'Consultas Multidisciplinares', cidade: 'Canoas', fone: '(51) 92001-4088' },
-            { nome: 'Laboratório Weinmann', especialidade: 'Análises Clínicas & Imagem', cidade: 'Canoas / POA', fone: '(51) 92001-4088' },
-            { nome: 'CEDICLIN', especialidade: 'Exames de Imagem / Tomografia', cidade: 'Canoas', fone: '(51) 92001-4088' },
-            { nome: 'Clínica Previsa', especialidade: 'Clínica Geral & Especialidades', cidade: 'Canoas', fone: '(51) 92001-4088' }
+            { especialidade: 'Acupuntura', nome: 'Clinotrauma', fone: '34724633/34724324', servico: '-', cidade: '-', endereco: 'Rua Frei Orlando, 75', profissional: 'Dr. Acir J Mangoni' },
+            { especialidade: 'Acupuntura', nome: 'Clinotrauma', fone: '34724633/34724324', servico: '-', cidade: '-', endereco: 'Rua Frei Orlando, 75', profissional: 'Dr. Acir Mangoni' },
+            { especialidade: 'Acupuntura', nome: 'Ideal Clínicas', fone: '37854431/37854432', servico: '-', cidade: 'Canoas', endereco: 'Av Santos Ferreira, 765', profissional: 'Diversos' },
+            { especialidade: 'Alergista', nome: 'Ideal Clinicas', fone: '37854431/37854432', servico: 'Exames', cidade: 'Canoas', endereco: 'Av Santos Ferreira, 765', profissional: 'Diversos' },
+            { especialidade: 'Alergologista', nome: 'Ideal Clínicas', fone: '37854431/37854432', servico: 'Exames', cidade: 'Canoas', endereco: 'Av Santos Ferreira, 765', profissional: 'Diversos' },
+            { especialidade: 'Análises Clínicas', nome: 'Cediclin', fone: '34661034/34662191', servico: 'Exames', cidade: 'Canoas', endereco: 'Rua Gonçalves Dias, 199', profissional: 'Diversos' },
+            { especialidade: 'Análises Clínicas', nome: 'Citoclin', fone: '34287075', servico: 'Exames', cidade: 'Canoas', endereco: 'Rua Gonçalves Dias, 88 SI 908', profissional: 'Diversos' },
+            { especialidade: 'Análises Clínicas', nome: 'Fontana', fone: '36613708', servico: 'Exames', cidade: 'Canoas', endereco: 'Rua XV de Janeiro, 193 9º andar', profissional: 'Diversos' },
+            { especialidade: 'Análises Clínicas', nome: 'Ideal Clínicas', fone: '37854431/37854432', servico: 'Exames', cidade: 'Canoas', endereco: 'Av Santos Ferreira, 765', profissional: 'Diversos' },
+            { especialidade: 'Análises Clínicas', nome: 'Labor', fone: '34685840', servico: 'Exames', cidade: '-', endereco: 'Av. Rio Grande do Sul, 741', profissional: 'Diversos' },
+            { especialidade: 'Análises Clínicas', nome: 'Weinmann', fone: '34725565/33143838', servico: 'Exames', cidade: 'Canoas', endereco: 'Rua Gonçalves Dias, 67', profissional: 'Diversos' },
+            { especialidade: 'Análises Clínicas', nome: 'Widal', fone: '34729237', servico: 'Exames', cidade: 'Canoas', endereco: 'Rua Venancio Aires, 1107', profissional: 'Diversos' },
+            { especialidade: 'Andrologia', nome: 'Dr. André Bonfati', fone: '33789920', servico: 'Consulta', cidade: 'Porto Alegre', endereco: 'Rua Soledade, 569 sl 907 B', profissional: 'Dr. André Bonfati' },
+            { especialidade: 'Anestesiologista', nome: 'Coloprocto', fone: '34787000', servico: 'Consulta', cidade: 'Canoas', endereco: 'Av. Boqueirão, 706', profissional: 'Albuquerque / Alan Castoldi / Oliveira / Campos / Huber / Stein' },
+            { especialidade: 'Anestesista', nome: 'Coloprocto', fone: '34787000', servico: 'Consulta', cidade: 'Canoas', endereco: 'Av. Boqueirão, 706', profissional: 'Gilberto Munhais' },
+            { especialidade: 'Angiografia Flourescente', nome: 'Oftalmologia Integrada', fone: '51 4042-7744', servico: 'Exames', cidade: 'Canoas', endereco: 'Rua 15 de janeiro, 373 sl 1404', profissional: 'Diversos' },
+            { especialidade: 'Angiologia', nome: 'Ideal Clínicas', fone: '37854431/37854432', servico: 'Consulta', cidade: 'Canoas', endereco: 'Av Santos Ferreira, 765', profissional: 'Diversos' },
+            { especialidade: 'Biometria Ultrassônica', nome: 'Oftalmologia Integrada', fone: '51 4042-7744', servico: 'Exames', cidade: 'Canoas', endereco: 'Rua 15 de janeiro, 373 sl 1404', profissional: 'Diversos' },
+            { especialidade: 'Campimetria Computadorizada', nome: 'Oftalmologia Integrada', fone: '51 4042-7744', servico: 'Exames', cidade: 'Canoas', endereco: 'Rua 15 de janeiro, 373 sl 1404', profissional: 'Diversos' },
+            { especialidade: 'Cardiologia', nome: 'Acertmed Canoas', fone: '(51) 3476-2001', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua XV de Janeiro, 196', profissional: 'Diversos' },
+            { especialidade: 'Cardiologia', nome: 'ASBEVECLIN', fone: '51 3414-3535', servico: 'Consulta', cidade: 'Porto Alegre', endereco: 'Rua Vig José Inácio, 547 20 And', profissional: 'Diversos' },
+            { especialidade: 'Cardiologia', nome: 'Cardiocenter', fone: '34765603/30515603', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua Felipe de Noronha', profissional: 'Dr. Carlos Alberto Santiago' },
+            { especialidade: 'Cardiologia', nome: 'Cardiovita', fone: '34641803', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua XV de Janeiro, 193/508', profissional: 'Dr. Jorge Scribel' },
+            { especialidade: 'Cardiologia', nome: 'Clínica Gemte', fone: '3466-9391', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua Goçalves dias 67 sl 901', profissional: 'Ricardo Soccol' },
+            { especialidade: 'Cardiologia', nome: 'Clinica Previsa', fone: '3785-1902/3785-1876', servico: 'Consulta', cidade: 'Canoas', endereco: 'Av. Santos Ferreira, 871', profissional: 'Dr. ABUD' },
+            { especialidade: 'Cardiologia', nome: 'Clinica São Camilo', fone: '(51) 99366-0380', servico: 'Consulta', cidade: 'Nova Sta Rita', endereco: 'Av Nova Sta Rita, 1664 sl 01', profissional: 'Diversos' },
+            { especialidade: 'Cardiologia', nome: 'Complexo HSCM', fone: '32148608/32148607', servico: 'Consulta', cidade: 'Porto Alegre', endereco: 'Av.Independencia, 155', profissional: 'Dr. Ronalti Zenker / Dr. Vitor Hugo Soto Paiva' },
+            { especialidade: 'Cardiologia', nome: 'Doctormed Gracinha', fone: '51 8911-4244', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua Santos ferreira, 1915', profissional: 'Diversos' },
+            { especialidade: 'Cardiologia', nome: 'Ideal Clínicas', fone: '37854431/37854432', servico: 'Consulta', cidade: 'Canoas', endereco: 'Av Santos Ferreira, 765', profissional: 'Diversos' },
+            { especialidade: 'Cardiologia', nome: 'Multiclinicas Palombini', fone: '34641803', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua Tiradentes, 17-2 andar', profissional: 'Dr. Fernando Nogueira' },
+            { especialidade: 'Cardiologia', nome: 'Procardio', fone: '30311919', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua XV de Janeiro, 373 sl 702', profissional: 'Dr. Antonio Fonseca' },
+            { especialidade: 'Centro Auditivo', nome: 'Unisons', fone: '32643333/33464000', servico: 'Exames', cidade: '-', endereco: '407', profissional: 'Diversos' },
+            { especialidade: 'Centro Auditivo', nome: 'Vittaclin', fone: '30597653', servico: 'Exames', cidade: 'Canoas', endereco: 'Rua XV de Janeiro, 193 Sala 510', profissional: 'Diversos' },
+            { especialidade: 'Ceratoscopia de Córnea', nome: 'Oftalmologia Integrada', fone: '51 4042-7744', servico: 'Exames', cidade: 'Canoas', endereco: 'Rua 15 de janeiro, 373 sl 1404', profissional: 'Diversos' },
+            { especialidade: 'Cintilografia', nome: 'Hospital Regina NH', fone: '3582-6399', servico: 'Exames', cidade: 'Novo Hamburgo', endereco: 'Av. Maurício Cardoso, 833', profissional: 'Diversos' },
+            { especialidade: 'Cintilografia', nome: 'Hospital Regina', fone: '35538800/34720226', servico: 'Exames', cidade: 'Porto Alegre / NH', endereco: 'Av. Mauricio Cardoso, 833', profissional: 'Diversos' },
+            { especialidade: 'Cirurgia Geral', nome: 'Clinica Previsa', fone: '3785-1902/3785-1878', servico: 'Consulta', cidade: '-', endereco: 'Av. Santos Ferreira, 871', profissional: 'Diversos' },
+            { especialidade: 'Cirurgia Geral', nome: 'Coloprocto', fone: '34787000', servico: 'Consulta', cidade: 'Canoas', endereco: 'Av. Boqueirão, 706', profissional: 'Ricardo da Costa / Diversos' },
+            { especialidade: 'Cirurgia Vascular', nome: 'Clinica Previsa', fone: '3785-1902/3785-1877', servico: 'Consulta', cidade: '-', endereco: 'Av. Santos Ferreira, 871', profissional: 'Diversos' },
+            { especialidade: 'Cirurgia Vascular', nome: 'Dr. Antenor G. Busetti', fone: '34726367', servico: 'Consulta', cidade: 'Canoas', endereco: 'Av.Inconfidencia, 71', profissional: 'Dr. André Busetti' },
+            { especialidade: 'Cirurgião', nome: 'Coloprocto', fone: '34787000', servico: 'Consulta', cidade: 'Canoas', endereco: 'Av.Boqueirão, 706', profissional: 'Florentino Viana Dutra / João Vicente Machado' },
+            { especialidade: 'Cirurgião Dentista', nome: 'ACERTMED', fone: '34762001', servico: 'Consulta', cidade: '-', endereco: 'Rua XV de Janeiro, 196', profissional: 'Dra. Daniela Tubino Rosa / Dra. Lucciana Cascaes' },
+            { especialidade: 'Cirurgião Dentista', nome: 'Camila Schmidt Alencastro', fone: '34763413', servico: 'Consulta', cidade: '-', endereco: 'Rua Araça, 80', profissional: 'Dra. Camila Alencastro' },
+            { especialidade: 'Cirurgião Dentista', nome: 'Dra. Miriam Pagot', fone: '34661030/34669605', servico: 'Consulta', cidade: '-', endereco: 'Rua Fioravante Milanez, 68 SI 40 / Guilherme Schell, 7004', profissional: 'Dra. Miriam Pagot' },
+            { especialidade: 'Cirurgião Dentista', nome: 'Dra. Nihad Hasan', fone: '34720226', servico: 'Consulta', cidade: '-', endereco: 'Rua Domingos Martins, 111 SI 60', profissional: 'Dra. Nihad Hasan' },
+            { especialidade: 'Cirurgião Dentista', nome: 'Vera Regina O.de Freitas', fone: '34724482', servico: 'Consulta', cidade: '-', endereco: 'Rua Cel Vicente, 1290', profissional: 'Dra. Vera Regina Freitas' },
+            { especialidade: 'Cirurgias (Pequeno Porte)', nome: 'Clinica Previsa', fone: '(51) 99478-9602', servico: 'Procedim', cidade: '-', endereco: 'Av. Santos Ferreira, 871', profissional: 'Diversos' },
+            { especialidade: 'Clínica Geral', nome: 'Clinica São Camilo', fone: '(51) 99366-0380', servico: 'Consulta', cidade: 'Nova Sta Rita', endereco: 'Av Nova Sta Rita, 1664 sl 01', profissional: 'Diversos' },
+            { especialidade: 'Clínica Geral', nome: 'Acertmed Canoas', fone: '(51) 3476-2001', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua XV de Janeiro, 196', profissional: 'Diversos' },
+            { especialidade: 'Clínica Geral', nome: 'Dra. Danielle C. Figueiró', fone: '34662415', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua XV, 373 Sala 1205', profissional: 'Dra. Danielle C. Figueiró' },
+            { especialidade: 'Clínica Geral', nome: 'Franklin Tomas Matessek', fone: '34724605', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua Tobias Barreto,381', profissional: 'Dr. Franklin Matessek' },
+            { especialidade: 'Clínica Geral', nome: 'Ideal Clínicas', fone: '37854431/37854432', servico: 'Consulta', cidade: 'Canoas', endereco: 'Av Santos Ferreira, 765', profissional: 'Diversos' },
+            { especialidade: 'Clínica Geral', nome: 'Multiclinicas Palombini', fone: '34727168/34722215', servico: 'Consulta', cidade: '-', endereco: 'Rua Tiradentes, 17-2 andar', profissional: 'Dra. Carmen Auré Lacombe / Dr. Marcelo D. Menegotto' },
+            { especialidade: 'Clínico Geral', nome: 'ASBEVECLIN', fone: '51 3414-3535', servico: 'Consulta', cidade: 'Porto Alegre', endereco: 'Rua Vig José Inácio, 547 20 And', profissional: 'Diversos' },
+            { especialidade: 'Clínico Geral', nome: 'Doctormed Gracinha', fone: '51 8911-4244', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua Santos ferreira, 1915', profissional: 'Diversos' },
+            { especialidade: 'Colonoscopia', nome: 'Clinica Previsa', fone: '-', servico: 'Exames', cidade: '-', endereco: 'Av. Santos Ferreira, 871', profissional: 'Diversos' },
+            { especialidade: 'Colonoscopia', nome: 'Coloprocto', fone: '34787000', servico: 'Exames', cidade: '-', endereco: 'Av. Boqueirão, 756', profissional: 'Dra. Gilmara Pandolfo / Diversos' },
+            { especialidade: 'Colonoscopia', nome: 'FUGAST', fone: '33272424', servico: 'Exames', cidade: 'Porto Alegre', endereco: 'Rua Silva Só, 255', profissional: 'Diversos' },
+            { especialidade: 'Coloproctologista', nome: 'Coloprocto', fone: '34787000', servico: 'Consulta', cidade: 'Canoas', endereco: 'Av. Boqueirão, 756 / 706', profissional: 'Dra. Gilmara Pandolfo / Dr. Ricardo Cunha / Dr. Florentino Dutra / Dr. Sérgio Frederes' },
+            { especialidade: 'Departamento Jurídico', nome: 'Remo Nonnenmacher', fone: '34771155', servico: 'Consulta', cidade: 'Nova Santa Rita', endereco: 'Av. Ver Deoclécio Rodrigues, 48', profissional: 'Remo Nonnenmacher' },
+            { especialidade: 'Dermatologia', nome: 'Acertmed Canoas', fone: '(51) 3476-2001', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua XV de Janeiro, 196', profissional: 'Diversos' },
+            { especialidade: 'Dermatologia', nome: 'ASBEVECLIN', fone: '51 3414-3535', servico: 'Consulta', cidade: 'Porto Alegre', endereco: 'Rua Vig José Inácio, 547 20 And', profissional: 'Diversos' },
+            { especialidade: 'Dermatologia', nome: 'Clinica São Camilo', fone: '(51) 99366-0380', servico: 'Consulta', cidade: 'Nova Sta Rita', endereco: 'Av Nova Sta Rita, 1664 sl 01', profissional: 'Diversos' },
+            { especialidade: 'Dermatologia', nome: 'Doctormed Gracinha', fone: '51 8911-4244', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua Santos ferreira, 1915', profissional: 'Diversos' },
+            { especialidade: 'Dermatologia', nome: 'Dra. Melissa Bonato', fone: '34760066', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua XV de Janeiro, 381 Sala 409', profissional: 'Dra. Melissa Bonato' },
+            { especialidade: 'Dermatologia', nome: 'Dra. Lisiane Custódio', fone: '34725038/34729818', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua XV de Janeiro, 373 Sl 1404', profissional: 'Dra. Lisiane Custódio' },
+            { especialidade: 'Dermatologia', nome: 'Dra. Marcia Tometto', fone: '34661132', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua Dr Barcelos, 1135 Sala 404', profissional: 'Dra. Marcia Tometto' },
+            { especialidade: 'Dermatologia', nome: 'Ideal Clínicas', fone: '37854431/37854432', servico: 'Consulta', cidade: 'Canoas', endereco: 'Av Santos Ferreira, 765', profissional: 'Diversos' },
+            { especialidade: 'Exames Audiológicos (Bera, Vocal, etc)', nome: 'Vittaclin', fone: '30597653', servico: 'Exames', cidade: 'Canoas', endereco: 'Rua XV de Janeiro, 193 Sala 510', profissional: 'Diversos' },
+            { especialidade: 'Densitometria', nome: 'Ecoclínica', fone: '34727905/34158800', servico: 'Exames', cidade: '-', endereco: 'Rua Fioravante Milanez, 68 504', profissional: 'Diversos' },
+            { especialidade: 'Eco / Doppler / Transvaginal', nome: 'Clinica Previsa', fone: '-', servico: 'Exames', cidade: '-', endereco: 'Av. Santos Ferreira, 871', profissional: 'Diversos' },
+            { especialidade: 'Ecografia', nome: 'Coloprocto', fone: '34787000', servico: 'Exames', cidade: 'Canoas', endereco: 'Av. Boqueirão,706', profissional: 'Marcela Alcântara' },
+            { especialidade: 'Ecografia', nome: 'Ecoclínica', fone: '34727905/34158800', servico: 'Exames', cidade: '-', endereco: 'Rua Fioravante Milanez, 68 504', profissional: 'Diversos' },
+            { especialidade: 'Ecografia', nome: 'Ecosson', fone: '34641000', servico: 'Exames', cidade: '-', endereco: 'Rua Dr.Barcelos, 1097', profissional: 'Diversos' },
+            { especialidade: 'Ecografia', nome: 'Ideal Clínicas', fone: '37854431/37854432', servico: 'Exames', cidade: 'Canoas', endereco: 'Av Santos Ferreira, 765', profissional: 'Diversos' },
+            { especialidade: 'Ecografia', nome: 'Medescan', fone: '32245239', servico: 'Exames', cidade: '-', endereco: 'Rua General Vitorino, 284', profissional: 'Diversos' },
+            { especialidade: 'Ecografia', nome: 'Vida Saúde', fone: '30616961', servico: 'Exames', cidade: '-', endereco: 'Av. Alberto Bins,392 SI 1004', profissional: 'Diversos' },
+            { especialidade: 'Ecografias Específicas (Abd, Joelho, etc)', nome: 'Clinica Previsa', fone: '51 99478-9602', servico: 'Exames', cidade: '-', endereco: 'Av. Santos Ferreira, 871', profissional: 'Diversos' },
+            { especialidade: 'EEG / Eletrocardiograma', nome: 'Clinica São Camilo', fone: '(51) 99366-0380', servico: 'Exames', cidade: 'Nova Sta Rita', endereco: 'Av Nova Sta Rita, 1664 sl 01', profissional: 'Diversos' },
+            { especialidade: 'Eletrocardiograma', nome: 'Clinica Previsa', fone: '51 99478-9602', servico: 'Exames', cidade: '-', endereco: 'Av. Santos Ferreira, 871', profissional: 'Diversos' },
+            { especialidade: 'Eletrocardiograma', nome: 'Doctormed Gracinha', fone: '51 8911-4244', servico: 'Exames', cidade: 'Canoas', endereco: 'Rua Santos ferreira, 1915', profissional: 'Diversos' },
+            { especialidade: 'Eletrocardiograma (ECG)', nome: 'Ideal Clínicas', fone: '37854431/37854432', servico: 'Exames', cidade: 'Canoas', endereco: 'Av Santos Ferreira, 765', profissional: 'Diversos' },
+            { especialidade: 'Eletroencefalograma', nome: 'Clinica Gemte', fone: '3466-9382', servico: 'Exames', cidade: 'Canoas', endereco: 'Rua Goçalves dias 67 sl 901', profissional: 'Diversos' },
+            { especialidade: 'Eletroencefalograma', nome: 'Dr. Antero S.Ferrera', fone: '32263991', servico: 'Exames', cidade: 'Porto Alegre', endereco: 'Rua Annes Dias, 154 11º', profissional: 'Dr. Antero S.Ferrera' },
+            { especialidade: 'Eletroencefalograma (EEG)', nome: 'Ideal Clínicas', fone: '37854431/37854432', servico: 'Exames', cidade: 'Canoas', endereco: 'Av Santos Ferreira, 765', profissional: 'Diversos' },
+            { especialidade: 'Eletromiografia', nome: 'Dr. Ricardo Marantes', fone: '34770035/34725557', servico: 'Exames', cidade: 'Canoas', endereco: 'Rua Santa Maria, 799', profissional: 'Dr. Ricardo Marantes' },
+            { especialidade: 'Eletroneuromiografia', nome: 'Clinica Gemte', fone: '3466-9382', servico: 'Exames', cidade: 'Canoas', endereco: 'Rua Goçalves dias 67 sl 901', profissional: 'Diversos' },
+            { especialidade: 'Eletroneuromiografia', nome: 'Dr Anthero', fone: '51 3226-3991', servico: 'Exames', cidade: 'Porto Alegre', endereco: 'Rua Prof Annes dias, 154 sl 1101', profissional: 'Dr Anthero' },
+            { especialidade: 'Endocrinologia', nome: 'Greice Castro Silva', fone: '32220969', servico: 'Consulta', cidade: 'Porto Alegre', endereco: 'Rua Félix da Cunha 737 / 311', profissional: 'Dra. Greice Castro Silva' },
+            { especialidade: 'Endocrinologia', nome: 'Acertmed Canoas', fone: '(51) 3476-2001', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua XV de Janeiro,196', profissional: 'Diversos' },
+            { especialidade: 'Endocrinologia', nome: 'André Rodrigues Neto', fone: '30314242/30514239', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua XV de Janeiro,184 Sl 301', profissional: 'Dr. André Rodrigues Neto' },
+            { especialidade: 'Endocrinologia', nome: 'Clinica Previsa', fone: '3785-1902 / 3785-1879', servico: 'Consulta', cidade: 'Canoas', endereco: 'Av. Santos Ferreira, 871', profissional: 'Diversos' },
+            { especialidade: 'Endocrinologia', nome: 'Doctormed Gracinha', fone: '51 8911-4244', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua Santos ferreira, 1915', profissional: 'Diversos' },
+            { especialidade: 'Endocrinologia', nome: 'Ideal Clínicas', fone: '37854431/37854432', servico: 'Consulta', cidade: 'Canoas', endereco: 'Av Santos Ferreira, 765', profissional: 'Diversos' },
+            { especialidade: 'Endocrinologia', nome: 'Multiclinicas Palombini', fone: '34727168/34722215', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua Tiradentes, 17 - 2°andar', profissional: 'Dra. Nadia Elise Lima Bandeira' },
+            { especialidade: 'Endocrinologia', nome: 'Newton Renato Bueno', fone: '34726367', servico: 'Consulta', cidade: 'Canoas', endereco: 'Av.Inconfidencia,71', profissional: 'Dr. Newton Renato Bueno' },
+            { especialidade: 'Endocrinologia', nome: 'ASBEVECLIN', fone: '51 3414-3535', servico: 'Consulta', cidade: 'Porto Alegre', endereco: 'Rua Vig José Inácio, 547 2o And', profissional: 'Diversos' },
+            { especialidade: 'Endoscopia', nome: 'FUGAST', fone: '33272424', servico: 'Exames', cidade: 'Porto Alegre', endereco: 'Rua Silva Só,255', profissional: 'Diversos' },
+            { especialidade: 'Endoscopia', nome: 'Multiclinicas Palombini', fone: '34727168/34722215', servico: 'Exames', cidade: 'Canoas', endereco: 'Rua Tiradentes, 17 - 2°andar', profissional: 'Dr. Fabrício Bragagnolo' },
+            { especialidade: 'Endoscopia Digestiva Alta', nome: 'Clinica Previsa', fone: '-', servico: 'Exames', cidade: 'Canoas', endereco: 'Av. Santos Ferreira, 871', profissional: 'Diversos' },
+            { especialidade: 'Enfermagem', nome: 'Coloprocto', fone: '34787000', servico: 'Atendimento', cidade: 'Canoas', endereco: 'Av.Boqueirão,706', profissional: 'Graziela Goetems' },
+            { especialidade: 'Ergometria', nome: 'Clinica Previsa', fone: '-', servico: 'Exames', cidade: 'Canoas', endereco: 'Av. Santos Ferreira, 871', profissional: 'Diversos' },
+            { especialidade: 'Espirometria', nome: 'Clinica São Camilo', fone: '(51) 99366-0380', servico: 'Exames', cidade: 'Nova Sta Rita', endereco: 'Av Nova Sta Rita, 1664 sl 01', profissional: 'Diversos' },
+            { especialidade: 'Espirometria', nome: 'Ideal Clínicas', fone: '37854431/37854432', servico: 'Exames', cidade: 'Canoas', endereco: 'Av Santos Ferreira, 765', profissional: 'Diversos' },
+            { especialidade: 'Exames de Sangue / Urina / Fezes', nome: 'Doctormed Gracinha', fone: '51 8911-4244', servico: 'Exames', cidade: 'Canoas', endereco: 'Rua Santos ferreira, 1915', profissional: 'Diversos' },
+            { especialidade: 'Exames Laboratoriais', nome: 'Ideal Clínicas', fone: '51 3785-4431', servico: 'Exames', cidade: 'Canoas', endereco: 'Av Santos Ferreira, 765', profissional: 'Diversos' },
+            { especialidade: 'Farmácia de Manipulação', nome: 'Qualitta', fone: '34752415 / 34760380', servico: 'Farmácia', cidade: 'Canoas', endereco: 'Rua Tamoio, 1728 / Rua Dr.Barcelos, 1135 / Av.Rio Grande do Sul, 1256', profissional: 'Diversos' },
+            { especialidade: 'Fisioterapeuta', nome: 'Coloprocto', fone: '34787000', servico: 'Consulta', cidade: 'Canoas', endereco: 'Av.Boqueirão,706', profissional: 'Luciene Tais Zabot' },
+            { especialidade: 'Fisioterapia', nome: 'Centro de Fisiot São Francisco', fone: '3476-6388', servico: 'Atendimento', cidade: 'Canoas', endereco: 'Rua Gonçalves Dias,88 Sl 908', profissional: 'Sabrina Mendes / Daniela Leal' },
+            { especialidade: 'Fisioterapia Domiciliar', nome: 'Dra. Liliane Dalpizol', fone: '9917411574', servico: 'Atendimento Domiciliar', cidade: 'Canoas', endereco: 'Atendimento domiciliar', profissional: 'Dra. Liliane Dalpizol' },
+            { especialidade: 'Fisioterapia', nome: 'Ideal Clínicas', fone: '3785-4431', servico: 'Consulta', cidade: 'Canoas', endereco: 'Av Santos Ferreira, 765', profissional: 'Diversos' },
+            { especialidade: 'Fisioterapia', nome: 'Nutritrauma', fone: '34766201', servico: 'Consulta', cidade: 'Canoas', endereco: 'Av.Guilherme Schell,6238', profissional: 'Dra. Carina Menezes de Souza' },
+            { especialidade: 'Fonoaudiologia', nome: 'Acertmed Canoas', fone: '(51) 3476-2001', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua XV de Janeiro,196', profissional: 'Diversos' },
+            { especialidade: 'Fonoaudiologia', nome: 'Dra. Adriana Lanfermann', fone: '30597453', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua XV de Janeiro,193 - Sl 510', profissional: 'Dra. Adriana Lanfermann' },
+            { especialidade: 'Fonoaudiologia', nome: 'Dra. Alexsandra Gomes Costa', fone: '30597423', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua XV de Janeiro,193 - Sl 510', profissional: 'Dra. Alexsandra Gomes Costa' },
+            { especialidade: 'Fonoaudiologia', nome: 'Lab. De Audiologia', fone: '32112058/32248612', servico: 'Exames', cidade: 'Porto Alegre', endereco: 'Rua dos Andradas, 1727 -Sala 65', profissional: 'Diversos' },
+            { especialidade: 'Funerária', nome: 'Funerária São Cristovão', fone: '34721323/08005104637', servico: 'Serviço', cidade: 'Canoas', endereco: 'Rua Santos Ferreira, 1375', profissional: 'Diversos' },
+            { especialidade: 'Gastroenterologia', nome: 'Acertmed Canoas', fone: '(51) 3476-2001', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua XV de Janeiro, 196', profissional: 'Diversos' },
+            { especialidade: 'Gastroenterologia', nome: 'Clinica Previsa', fone: '3785-1902/3785-1880', servico: 'Consulta', cidade: 'Canoas', endereco: 'Av. Santos Ferreira, 871', profissional: 'Diversos' },
+            { especialidade: 'Gastroenterologia', nome: 'Coloprocto', fone: '34787000', servico: 'Consulta', cidade: 'Canoas', endereco: 'Av. Boqueirão, 756 / 706', profissional: 'Dr. Mauro Maia / Dr. Gabriel Stefani Leão / Dra. Renata B. Oliveira / Ana Paula Claro / Ari Ben-Hur / Felipe Lunardi' },
+            { especialidade: 'Gastroenterologia', nome: 'Dr. Arilo B. Alcantra', fone: '34763697', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua XV de Janeiro, 184 Sala 703', profissional: 'Dr. Arilo B. Alcantra' },
+            { especialidade: 'Gastroenterologia', nome: 'Dr. Cláudio Sicca', fone: '34733871', servico: 'Consulta', cidade: 'Esteio', endereco: 'Rua Dom Pedro, 55', profissional: 'Dr. Cláudio Sicca' },
+            { especialidade: 'Gastroenterologia', nome: 'FUGAST', fone: '33272424', servico: 'Exames', cidade: 'Porto Alegre', endereco: 'Rua Silva Só, 255', profissional: 'Diversos' },
+            { especialidade: 'Gastroenterologia', nome: 'Ideal Clínicas', fone: '37854431/37854432', servico: 'Consulta', cidade: 'Canoas', endereco: 'Av Santos Ferreira, 765', profissional: 'Diversos' },
+            { especialidade: 'Gastroenterologia', nome: 'Multiclinicas Palombini', fone: '34727168/34722215', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua Tiradentes, 17-2 andar', profissional: 'Dr. Fabricio Bragagnolo' },
+            { especialidade: 'Geriatria Clínica', nome: 'Janete Rousselet de Souza', fone: '35187825', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua XV de Janeiro, 193', profissional: 'Dra. Janete Rousselet de Souza' },
+            { especialidade: 'Geriatria', nome: 'ASBEVECLIN', fone: '51 3414-3535', servico: 'Consulta', cidade: 'Porto Alegre', endereco: 'Rua Vig José Inácio, 547 20 And', profissional: 'Diversos' },
+            { especialidade: 'Geriatria', nome: 'Ideal Clínicas', fone: '37854431/37854432', servico: 'Consulta', cidade: 'Canoas', endereco: 'Av Santos Ferreira, 765', profissional: 'Diversos' },
+            { especialidade: 'Ginecologia / Obstetrícia', nome: 'Acertmed Canoas', fone: '(51) 3476-2001', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua XV de Janeiro, 196', profissional: 'Diversos' },
+            { especialidade: 'Ginecologia / Obstetrícia', nome: 'ASBEVECLIN', fone: '51 3414-3535', servico: 'Consulta', cidade: 'Porto Alegre', endereco: 'Rua Vig José Inácio, 547 20 And', profissional: 'Diversos' },
+            { especialidade: 'Ginecologia / Obstetrícia', nome: 'Clinica São Camilo', fone: '(51) 99366-0380', servico: 'Consulta', cidade: 'Nova Sta Rita', endereco: 'Av Nova Sta Rita, 1664 sl 01', profissional: 'Diversos' },
+            { especialidade: 'Ginecologia / Obstetrícia', nome: 'Doctormed Gracinha', fone: '51 8911-4244', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua Santos ferreira, 1915', profissional: 'Diversos' },
+            { especialidade: 'Ginecologia / Obstetrícia', nome: 'Clinica Previsa', fone: '3785-1902/3785-1881', servico: 'Consulta', cidade: 'Canoas', endereco: 'Av. Santos Ferreira, 871', profissional: 'Diversos' },
+            { especialidade: 'Ginecologia / Obstetrícia', nome: 'Dr. Ernani Cadore', fone: '34728396', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua Muck, 344 - Sala 704', profissional: 'Dr. Ernani Cadore' },
+            { especialidade: 'Ginecologia / Obstetrícia', nome: 'Dra. Micheli Ozanai', fone: '34729395', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua Fioravante Milanez,68 6º', profissional: 'Dra. Micheli Ozanai' },
+            { especialidade: 'Ginecologia / Obstetrícia', nome: 'Elaine Maria Goergen Brust', fone: '34763330', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua Muck, 344 - Sala 601', profissional: 'Elaine Maria Goergen Brust' },
+            { especialidade: 'Ginecologia / Obstetrícia', nome: 'Ideal Clínicas', fone: '(51) 3785-4431', servico: 'Consulta', cidade: 'Canoas', endereco: 'Av Santos Ferreira, 765', profissional: 'Diversos' },
+            { especialidade: 'Grupo de Tratamento (Dependência / Hipertensão)', nome: 'Clinica Previsa', fone: '3785-1902', servico: 'Consulta', cidade: 'Canoas', endereco: 'Av. Santos Ferreira, 871', profissional: 'Diversos' },
+            { especialidade: 'Holter 24Hs / MAPA 24Hs', nome: 'Clinica São Camilo', fone: '(51) 99366-0380', servico: 'Exames', cidade: 'Nova Sta Rita', endereco: 'Av Nova Sta Rita, 1664 sl 01', profissional: 'Diversos' },
+            { especialidade: 'Holter 24Hs', nome: 'Ideal Clínicas', fone: '37854431/37854432', servico: 'Exames', cidade: 'Canoas', endereco: 'Av Santos Ferreira, 765', profissional: 'Diversos' },
+            { especialidade: 'Holter 24Hs / MAPA', nome: 'Clinica Previsa', fone: '3785-1902', servico: 'Exames', cidade: 'Canoas', endereco: 'Av. Santos Ferreira, 871', profissional: 'Diversos' },
+            { especialidade: 'Homeopatia', nome: 'Dra. Maria de Fátima', fone: '34766209', servico: 'Consulta', cidade: 'Canoas', endereco: 'Rua Pedro Álvares Cabral, 395', profissional: 'Dra. Maria de Fátima' },
+            { especialidade: 'Mapeamento de Retina', nome: 'Oftalmologia Integrada', fone: '51 4042-7744', servico: 'Exames', cidade: 'Canoas', endereco: 'Rua 15 de janeiro, 373 sl 1404', profissional: 'Diversos' },
+            { especialidade: 'Massoterapia', nome: 'Clinica Previsa', fone: '3785-1902', servico: 'Atendimento', cidade: 'Canoas', endereco: 'Av. Santos Ferreira, 871', profissional: 'Diversos' },
+            { especialidade: 'Massoterapia', nome: 'Ideal Clínicas', fone: '37854431/37854432', servico: 'Atendimento', cidade: 'Canoas', endereco: 'Av Santos Ferreira, 765', profissional: 'Diversos' },
+            { especialidade: 'Massoterapia', nome: 'Terapias Orientais', fone: '-', servico: 'Atendimento', cidade: 'Canoas', endereco: 'Rua Tiradentes, 17-2º', profissional: 'Ana Paula Rouber / Zé Derly' },
+            { especialidade: 'Mastologia', nome: 'Complexo HSCM', fone: '32148608/32148607', servico: 'Consulta', cidade: 'Porto Alegre', endereco: 'Av.Independencia, 155', profissional: 'Dra. Gabriela' }
         ],
         get filteredConvenios() {
             return this.convenios.filter(c => 
                 c.nome.toLowerCase().includes(this.search.toLowerCase()) ||
                 c.especialidade.toLowerCase().includes(this.search.toLowerCase()) ||
-                c.cidade.toLowerCase().includes(this.search.toLowerCase())
+                c.cidade.toLowerCase().includes(this.search.toLowerCase()) ||
+                c.profissional.toLowerCase().includes(this.search.toLowerCase()) ||
+                c.endereco.toLowerCase().includes(this.search.toLowerCase())
             )
         }
     }">
@@ -162,39 +304,46 @@
             <div class="text-center max-w-2xl mx-auto mb-10">
                 <span class="text-blue-600 font-bold uppercase tracking-wider text-sm">Mais de 300 Parceiros</span>
                 <h2 class="text-3xl font-extrabold text-gray-900 mt-2">Nossa Rede Conveniada</h2>
-                <p class="text-gray-600 mt-2">Pesquise por nome da clínica, especialidade médica ou cidade para encontrar o parceiro ideal.</p>
+                <p class="text-gray-600 mt-2">Pesquise por nome da clínica, especialidade médica, profissional ou cidade para encontrar o parceiro ideal.</p>
                 
                 <!-- Barra de Pesquisa -->
                 <div class="mt-6 relative">
-                    <input type="text" x-model="search" placeholder="Digite uma especialidade, médico ou hospital..." 
+                    <input type="text" x-model="search" placeholder="Digite uma especialidade, médico, clínica ou cidade..." 
                            class="w-full pl-12 pr-4 py-4 rounded-xl border border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-600 focus:outline-none text-gray-800">
                     <i data-lucide="search" class="absolute left-4 top-4 text-gray-400 w-6 h-6"></i>
                 </div>
             </div>
 
-            <!-- Tabela de Resultados -->
+            <!-- Tabela de Resultados Ampliada -->
             <div class="bg-white rounded-2xl shadow-md overflow-hidden">
                 <div class="overflow-x-auto">
                     <table class="w-full text-left border-collapse">
                         <thead>
-                            <tr class="bg-blue-900 text-white text-sm font-semibold uppercase">
-                                <th class="py-4 px-6">Estabelecimento / Médico</th>
-                                <th class="py-4 px-6">Especialidade</th>
-                                <th class="py-4 px-6">Cidade</th>
-                                <th class="py-4 px-6">Contato</th>
+                            <tr class="bg-blue-900 text-white text-xs font-semibold uppercase tracking-wider">
+                                <th class="py-4 px-4">Especialidade</th>
+                                <th class="py-4 px-4">Estabelecimento / Clínica</th>
+                                <th class="py-4 px-4">Profissional</th>
+                                <th class="py-4 px-4">Serviço</th>
+                                <th class="py-4 px-4">Cidade / Endereço</th>
+                                <th class="py-4 px-4">Telefone</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200 text-sm">
-                            <template x-for="item in filteredConvenios" :key="item.nome">
+                            <template x-for="(item, index) in filteredConvenios" :key="index">
                                 <tr class="hover:bg-blue-50 transition">
-                                    <td class="py-4 px-6 font-bold text-gray-900" x-text="item.nome"></td>
-                                    <td class="py-4 px-6 text-gray-600" x-text="item.especialidade"></td>
-                                    <td class="py-4 px-6 text-gray-600" x-text="item.cidade"></td>
-                                    <td class="py-4 px-6 text-blue-700 font-semibold" x-text="item.fone"></td>
+                                    <td class="py-4 px-4 font-bold text-blue-900" x-text="item.especialidade"></td>
+                                    <td class="py-4 px-4 font-semibold text-gray-900" x-text="item.nome"></td>
+                                    <td class="py-4 px-4 text-gray-700" x-text="item.profissional"></td>
+                                    <td class="py-4 px-4 text-gray-600" x-text="item.servico"></td>
+                                    <td class="py-4 px-4 text-gray-600">
+                                        <span class="font-medium text-gray-800" x-text="item.cidade"></span><br>
+                                        <span class="text-xs text-gray-500" x-text="item.endereco"></span>
+                                    </td>
+                                    <td class="py-4 px-4 text-blue-700 font-semibold whitespace-nowrap" x-text="item.fone"></td>
                                 </tr>
                             </template>
                             <tr x-show="filteredConvenios.length === 0">
-                                <td colspan="4" class="py-8 text-center text-gray-500">
+                                <td colspan="6" class="py-8 text-center text-gray-500">
                                     Nenhum conveniado encontrado para a sua busca.
                                 </td>
                             </tr>
