@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABAPEC - Associação de Aposentados e Pensionistas de Canoas</title>
+    <!-- Tailwind CSS (CDN para prototipagem rápida) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Alpine.js para interatividade (Busca/Filtros) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .video-bg {
+            filter: brightness(0.4) opacity(0.8);
+        }
+        /* Marquee / Logos Deslizantes */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: 200%;
+            animation: scroll 25s linear infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans leading-relaxed">
+
+    <!-- BOTÃO FLUTUANTE WHATSAPP -->
+    <a href="https://wa.me/5551920014088" target="_blank" rel="noopener noreferrer" 
+       class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl z-50 transition-transform transform hover:scale-110 flex items-center justify-center">
+        <i data-lucide="message-circle" class="w-8 h-8"></i>
+    </a>
+
+    <!-- HEADER / CABEÇALHO -->
+    <header class="bg-white shadow-md sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 bg-blue-700 text-white rounded-full flex items-center justify-center font-bold text-xl">
+                    A
+                </div>
+                <div>
+                    <span class="text-2xl font-extrabold text-blue-900 tracking-tight">ABAPEC</span>
+                    <p class="text-xs text-gray-500 font-medium">Associação de Aposentados e Pensionistas</p>
+                </div>
+            </div>
+
+            <!-- Navegação -->
+            <nav class="hidden md:flex space-x-6 text-sm font-semibold text-gray-700">
+                <a href="#home" class="hover:text-blue-700 transition">Home</a>
+                <a href="#quem-somos" class="hover:text-blue-700 transition">Quem Somos</a>
+                <a href="#convenios" class="hover:text-blue-700 transition">Convênios</a>
+                <a href="#como-usar" class="hover:text-blue-700 transition">Como Usar</a>
+                <a href="#associe-se" class="hover:text-blue-700 transition">Associe-se</a>
+                <a href="#contato" class="hover:text-blue-700 transition">Contato</a>
+            </nav>
+
+            <!-- Botões de Acesso Rápido -->
+            <div class="hidden lg:flex items-center space-x-2">
+                <a href="#associe-se" class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-2 rounded-lg hover:bg-blue-200 transition">Acesso Sócio</a>
+                <a href="#contato" class="bg-blue-800 text-white text-xs font-bold px-3 py-2 rounded-lg hover:bg-blue-900 transition">Acesso Conveniado</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- SEÇÃO HOME (HERO COM VÍDEO E SLIDER DE LOGOS) -->
+    <section id="home" class="relative h-[80vh] flex items-center justify-center overflow-hidden bg-black">
+        <!-- Vídeo de Fundo estilo Pexels -->
+        <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover video-bg">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-senior-couple-walking-in-a-park-41551-large.mp4" type="video/mp4">
+        </video>
+
+        <div class="relative z-10 text-center text-white max-w-4xl px-4">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-md">
+                Cuidando do seu bem-estar há mais de 35 anos.
+            </h1>
+            <p class="text-lg md:text-xl font-light mb-8 text-blue-100">
+                Saúde de qualidade, atendimento prioritário e descontos exclusivos de até 50% em exames e consultas para você e sua família.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#associe-se" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4 rounded-xl shadow-lg transition transform hover:-translate-y-1">
+                    Quero me Associar Agora
+                </a>
+                <a href="#convenios" class="bg-white hover:bg-gray-100 text-blue-900 font-bold px-8 py-4 rounded-xl shadow-lg transition">
+                    Ver Nossa Rede Conveniada
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAICHA/CARROSSEL DE LOGOS DOS PRINCIPAIS CONVÊNIOS -->
+    <div class="bg-blue-900 py-4 overflow-hidden border-t border-b border-blue-800">
+        <div class="animate-marquee items-center space-x-12 text-white font-semibold opacity-80 text-sm tracking-wider uppercase">
+            <span>• Santa Casa de Misericórdia</span>
+            <span>• Hospital Regina</span>
+            <span>• Cardiocenter</span>
+            <span>• Multiclínica Palombini</span>
+            <span>• Laboratório Weinmann</span>
+            <span>• Laboratório Widal</span>
+            <span>• CEDICLIN</span>
+            <span>• BV Clean</span>
+            <span>• Clínica Previsa</span>
+            <!-- Repetição para efeito continuo -->
+            <span>• Santa Casa de Misericórdia</span>
+            <span>• Hospital Regina</span>
+            <span>• Cardiocenter</span>
+            <span>• Multiclínica Palombini</span>
+            <span>• Laboratório Weinmann</span>
+            <span>• Laboratório Widal</span>
+        </div>
+    </div>
+
+    <!-- SEÇÃO QUEM SOMOS -->
+    <section id="quem-somos" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <span class="text-blue-600 font-bold uppercase tracking-wider text-sm">Nossa História & Propósito</span>
+                <h2 class="text-3xl font-extrabold text-gray-900 mt-2 mb-6">Tradição, agilidade e carinho com a sua saúde.</h2>
+                <p class="text-gray-600 mb-4">
+                    Fundada em 1987 na cidade de Canoas/RS, a **ABAPEC** conta hoje com mais de **11.000 associados**. Nosso objetivo sempre foi prover uma alternativa rápida, humana e acessível para que idosos e famílias não dependam da demora da rede pública de saúde.
+                </p>
+                <p class="text-gray-600 mb-4">
+                    Oferecemos atendimento prioritário com descontos expressivos de **30% a 50%** em exames laboratoriais, exames de imagem, consultas médicas com especialistas e redes parceiras de farmácias e serviços autônomos.
+                </p>
+                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-600 mb-6">
+                    <h4 class="font-bold text-blue-900 mb-1">Quem pode fazer parte?</h4>
+                    <p class="text-xs text-blue-800">
+                        • **Aposentados e Pensionistas:** Acesso total aos benefícios.<br>
+                        • **Sócios Contribuintes:** Desde 2019, qualquer pessoa a partir de 25 anos pode se associar!<br>
+                        • **Dependentes:** Menores de 18 anos não pagam mensalidade. Dependentes especiais/portadores de deficiência severa mantêm o benefício sem limite de idade.
+                    </p>
+                </div>
+            </div>
+            <div class="relative">
+                <img src="https://images.pexels.com/photos/3768114/pexels-photo-3768114.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Atendimento Médico ABAPEC" class="rounded-2xl shadow-xl w-full object-cover h-[400px]">
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO CONVÊNIOS (COM BUSCA EM TEMPO REAL) -->
+    <section id="convenios" class="py-16 bg-gray-100" x-data="{
+        search: '',
+        convenios: [
+            { nome: 'Santa Casa de Misericórdia', especialidade: 'Hospitalar / Atendimento Geral', cidade: 'Porto Alegre', fone: '(51) 3214-8000' },
+            { nome: 'Hospital Regina', especialidade: 'Hospitalar / Pronto Atendimento', cidade: 'Novo Hamburgo', fone: '(51) 3581-5100' },
+            { nome: 'Cardiocenter', especialidade: 'Cardiologia & Exames', cidade: 'Canoas', fone: '(51) 92001-4088' },
+            { nome: 'Multiclínica Palombini', especialidade: 'Consultas Multidisciplinares', cidade: 'Canoas', fone: '(51) 92001-4088' },
+            { nome: 'Laboratório Weinmann', especialidade: 'Análises Clínicas & Imagem', cidade: 'Canoas / POA', fone: '(51) 92001-4088' },
+            { nome: 'CEDICLIN', especialidade: 'Exames de Imagem / Tomografia', cidade: 'Canoas', fone: '(51) 92001-4088' },
+            { nome: 'Clínica Previsa', especialidade: 'Clínica Geral & Especialidades', cidade: 'Canoas', fone: '(51) 92001-4088' }
+        ],
+        get filteredConvenios() {
+            return this.convenios.filter(c => 
+                c.nome.toLowerCase().includes(this.search.toLowerCase()) ||
+                c.especialidade.toLowerCase().includes(this.search.toLowerCase()) ||
+                c.cidade.toLowerCase().includes(this.search.toLowerCase())
+            )
+        }
+    }">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-blue-600 font-bold uppercase tracking-wider text-sm">Mais de 300 Parceiros</span>
+                <h2 class="text-3xl font-extrabold text-gray-900 mt-2">Nossa Rede Conveniada</h2>
+                <p class="text-gray-600 mt-2">Pesquise por nome da clínica, especialidade médica ou cidade para encontrar o parceiro ideal.</p>
+                
+                <!-- Barra de Pesquisa -->
+                <div class="mt-6 relative">
+                    <input type="text" x-model="search" placeholder="Digite uma especialidade, médico ou hospital..." 
+                           class="w-full pl-12 pr-4 py-4 rounded-xl border border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-600 focus:outline-none text-gray-800">
+                    <i data-lucide="search" class="absolute left-4 top-4 text-gray-400 w-6 h-6"></i>
+                </div>
+            </div>
+
+            <!-- Tabela de Resultados -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-blue-900 text-white text-sm font-semibold uppercase">
+                                <th class="py-4 px-6">Estabelecimento / Médico</th>
+                                <th class="py-4 px-6">Especialidade</th>
+                                <th class="py-4 px-6">Cidade</th>
+                                <th class="py-4 px-6">Contato</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200 text-sm">
+                            <template x-for="item in filteredConvenios" :key="item.nome">
+                                <tr class="hover:bg-blue-50 transition">
+                                    <td class="py-4 px-6 font-bold text-gray-900" x-text="item.nome"></td>
+                                    <td class="py-4 px-6 text-gray-600" x-text="item.especialidade"></td>
+                                    <td class="py-4 px-6 text-gray-600" x-text="item.cidade"></td>
+                                    <td class="py-4 px-6 text-blue-700 font-semibold" x-text="item.fone"></td>
+                                </tr>
+                            </template>
+                            <tr x-show="filteredConvenios.length === 0">
+                                <td colspan="4" class="py-8 text-center text-gray-500">
+                                    Nenhum conveniado encontrado para a sua busca.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO COMO USAR -->
+    <section id="como-usar" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-blue-600 font-bold uppercase tracking-wider text-sm">Passo a Passo Simplificado</span>
+                <h2 class="text-3xl font-extrabold text-gray-900 mt-2">Como solicitar e usar seus benefícios</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Passo 1 -->
+                <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100 shadow-sm relative">
+                    <div class="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center font-bold text-xl mb-4">1</div>
+                    <h3 class="text-xl font-bold mb-2">Solicite a Autorização</h3>
+                    <p class="text-gray-600 text-sm">
+                        Envie uma mensagem para nosso WhatsApp com 2 dias úteis de antecedência do seu atendimento informando o serviço e o conveniado desejado.
+                    </p>
+                </div>
+                <!-- Passo 2 -->
+                <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100 shadow-sm relative">
+                    <div class="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center font-bold text-xl mb-4">2</div>
+                    <h3 class="text-xl font-bold mb-2">Emissão Automática</h3>
+                    <p class="text-gray-600 text-sm">
+                        Nosso sistema gera a Autorização de Encaminhamento que é enviada diretamente ao prestador e uma cópia no seu WhatsApp.
+                    </p>
+                </div>
+                <!-- Passo 3 -->
+                <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100 shadow-sm relative">
+                    <div class="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center font-bold text-xl mb-4">3</div>
+                    <h3 class="text-xl font-bold mb-2">Atendimento Direto</h3>
+                    <p class="text-gray-600 text-sm">
+                        No dia agendado, basta apresentar seu Documento de Identidade com foto na clínica ou hospital. A autorização já estará no sistema!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Destaque Programa de Indicação -->
+            <div class="mt-12 bg-gradient-to-r from-blue-900 to-blue-700 text-white rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between shadow-xl">
+                <div>
+                    <h3 class="text-2xl font-bold mb-2">Programa de Indicação: Ganhe Isenções!</h3>
+                    <p class="text-blue-100 text-sm">Cada amigo ou parente que você indicar garante 1 mês de mensalidade grátis (limite de até 6 meses/ano).</p>
+                </div>
+                <a href="https://wa.me/5551920014088?text=Quero%20indicar%20um%20amigo" class="mt-4 md:mt-0 bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-extrabold px-6 py-3 rounded-xl transition">
+                    Indicar um Amigo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO ASSOCIE-SE (FORMULÁRIO PREPARADO PARA INTEGRAÇÃO) -->
+    <section id="associe-se" class="py-16 bg-gray-50" x-data="{
+        enviado: false,
+        submitForm() {
+            this.enviado = true;
+            // Integração futura via Webhook / API
+        }
+    }">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-gray-100">
+                <div class="text-center mb-8">
+                    <span class="text-blue-600 font-bold uppercase tracking-wider text-sm">Faça parte hoje mesmo</span>
+                    <h2 class="text-3xl font-extrabold text-gray-900 mt-2">Formulário de Associação 100% Online</h2>
+                    <p class="text-gray-500 text-sm mt-1">Taxa de associação: R$ 30,00. Carência liberada via Pix em até 2 horas!</p>
+                </div>
+
+                <div x-show="enviado" class="bg-green-100 border border-green-400 text-green-700 px-6 py-4 rounded-xl text-center mb-6">
+                    <h4 class="font-bold text-lg">Cadastro recebido com sucesso!</h4>
+                    <p class="text-sm mt-1">Seu pré-cadastro ficou com status <strong>PENDENTE</strong>. Enviamos o link de pagamento da taxa para o seu WhatsApp/E-mail para liberação do acesso.</p>
+                </div>
+
+                <form x-show="!enviado" @submit.prevent="submitForm()" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">Nome Completo *</label>
+                            <input type="text" required class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">CPF *</label>
+                            <input type="text" required placeholder="000.000.000-00" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none">
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">Data de Nascimento *</label>
+                            <input type="date" required class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">WhatsApp / Telefone *</label>
+                            <input type="tel" required placeholder="(51) 99999-9999" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">Tipo de Sócio *</label>
+                            <select required class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none bg-white">
+                                <option value="">Selecione...</option>
+                                <option value="aposentado">Aposentado / Pensionista</option>
+                                <option value="contribuinte">Sócio Contribuinte (A partir de 25 anos)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">E-mail *</label>
+                        <input type="email" required class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Endereço Completo com CEP *</label>
+                        <input type="text" required placeholder="Rua, Número, Bairro, CEP e Cidade" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none">
+                    </div>
+
+                    <button type="submit" class="w-full bg-blue-700 hover:bg-blue-800 text-white font-extrabold py-4 rounded-xl shadow-lg transition">
+                        Finalizar e Gerar Pagamento da Taxa
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO CONTATO COM MAPA -->
+    <section id="contato" class="py-16 bg-white" x-data="{
+        contatoEnviado: false,
+        enviarMensagem() {
+            this.contatoEnviado = true;
+        }
+    }">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12">
+            <div>
+                <span class="text-blue-600 font-bold uppercase tracking-wider text-sm">Fale Conosco</span>
+                <h2 class="text-3xl font-extrabold text-gray-900 mt-2 mb-6">Estamos prontos para atender você.</h2>
+                
+                <div class="space-y-4 text-gray-600 mb-8">
+                    <div class="flex items-start space-x-3">
+                        <i data-lucide="map-pin" class="text-blue-600 w-6 h-6 shrink-0 mt-1"></i>
+                        <span><strong>Endereço:</strong> Rua Coronel Vicente, 191 - Fundos, Centro - Canoas/RS</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <i data-lucide="clock" class="text-blue-600 w-6 h-6 shrink-0"></i>
+                        <span><strong>Atendimento Presencial:</strong> Terças e Quintas das 14h às 17h</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <i data-lucide="phone" class="text-blue-600 w-6 h-6 shrink-0"></i>
+                        <span><strong>Telefone / WhatsApp:</strong> (51) 92001-4088</span>
+                    </div>
+                </div>
+
+                <!-- Formulário de Contato -->
+                <div x-show="contatoEnviado" class="bg-blue-50 text-blue-900 p-4 rounded-xl border border-blue-200">
+                    Obrigado por entrar em contato! Sua mensagem foi enviada com sucesso e retornaremos em breve.
+                </div>
+
+                <form x-show="!contatoEnviado" @submit.prevent="enviarMensagem()" class="space-y-4">
+                    <input type="text" placeholder="Seu Nome Completo *" required class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none">
+                    <input type="email" placeholder="Seu E-mail *" required class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none">
+                    <input type="tel" placeholder="Seu Telefone/WhatsApp *" required class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none">
+                    <textarea placeholder="Como podemos ajudar?" required rows="4" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none"></textarea>
+                    <button type="submit" class="bg-gray-900 hover:bg-black text-white font-bold px-6 py-3 rounded-lg transition">Enviar Mensagem</button>
+                </form>
+            </div>
+
+            <!-- Mapa Google Maps Incorporado -->
+            <div class="h-full min-h-[350px] rounded-2xl overflow-hidden shadow-lg border">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3458.128790076628!2d-51.1837!3d-29.9189!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95197825a0000001%3A0x0!2zUnVhIENvcm9uZWwgVmljZW50ZSwgMTkxIC0gQ2VudHJvLCBDYW5vYXMgLSBSUw!5e0!3m2!1spt-BR!2sbr!4v1600000000000!5m2!1spt-BR!2sbr" 
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ (FOOTER) -->
+    <footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8">
+            <div>
+                <span class="text-2xl font-extrabold text-white">ABAPEC</span>
+                <p class="text-sm mt-2">Associação Beneficente dos Aposentados e Pensionistas de Canoas. Há mais de 35 anos promovendo saúde, descontos e qualidade de vida.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Links Rápidos</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#home" class="hover:text-white transition">Home</a></li>
+                    <li><a href="#quem-somos" class="hover:text-white transition">Quem Somos</a></li>
+                    <li><a href="#convenios" class="hover:text-white transition">Lista de Convênios</a></li>
+                    <li><a href="#associe-se" class="hover:text-white transition">Associe-se Online</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Atendimento</h4>
+                <p class="text-sm">Rua Coronel Vicente, 191 - Fundos<br>Centro - Canoas/RS</p>
+                <p class="text-sm mt-2">WhatsApp: (51) 92001-4088</p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 mt-8 pt-8 border-t border-gray-800 text-center text-xs">
+          © 2026 ABAPEC - Todos os direitos reservados. | Desenvolvido por <span class="font-bold text-white">VETIX Tecnologia</span>
+        </div>
+    </footer>
+
+    <!-- Inicializar Ícones Lucide -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
