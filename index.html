@@ -11,6 +11,7 @@
     <!-- Ícones Lucide -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
+        [x-cloak] { display: none !important; }
         .video-bg {
             filter: brightness(0.55) opacity(0.85);
         }
@@ -445,6 +446,8 @@
     <!-- SEÇÃO ASSOCIE-SE (FORMULÁRIO PREPARADO PARA INTEGRAÇÃO) -->
     <section id="associe-se" class="py-16 bg-gray-50" x-data="{
         enviado: false,
+        showCarencia: false,
+        showEmailInfo: false,
         submitForm() {
             this.enviado = true;
         }
@@ -454,7 +457,11 @@
                 <div class="text-center mb-8">
                     <span class="text-blue-600 font-bold uppercase tracking-wider text-sm">Faça parte hoje mesmo</span>
                     <h2 class="text-3xl font-extrabold text-gray-900 mt-2">Formulário de Associação 100% Online</h2>
-                    <p class="text-gray-500 text-sm mt-1">Taxa de associação: R$ 30,00. Carência liberada via Pix em até 2 horas!</p>
+                    <p class="text-gray-500 text-sm mt-1">Taxa de associação: R$ 30,00. Cadastro liberado via Pix em até 2 horas!</p>
+                    <p class="text-gray-500 text-sm mt-1">
+                        <strong class="text-gray-700">Carência:</strong> 2 meses (podendo ser antecipada junto com a taxa de associação)
+                        <button type="button" @click="showCarencia = true" class="text-blue-600 font-bold underline hover:text-blue-800 ml-1">Saiba mais</button>
+                    </p>
                 </div>
 
                 <div x-show="enviado" class="bg-green-100 border border-green-400 text-green-700 px-6 py-4 rounded-xl text-center mb-6">
@@ -487,14 +494,19 @@
                             <label class="block text-sm font-bold text-gray-700 mb-2">Tipo de Sócio *</label>
                             <select required class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none bg-white">
                                 <option value="">Selecione...</option>
-                                <option value="aposentado">Aposentado / Pensionista</option>
+                                <option value="aposentado">Aposentado</option>
+                                <option value="pensionista">Pensionista</option>
                                 <option value="contribuinte">Sócio Contribuinte (A partir de 25 anos)</option>
                             </select>
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-2">E-mail *</label>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">
+                            E-mail *
+                            <button type="button" @click="showEmailInfo = true" class="text-blue-600 font-bold underline hover:text-blue-800 normal-case ml-1">Saiba mais</button>
+                        </label>
+                        <p class="text-xs text-gray-500 mb-2">Pode ser o seu e-mail ou o de um parente / amigo próximo.</p>
                         <input type="email" required class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none">
                     </div>
 
@@ -507,6 +519,36 @@
                         Finalizar e Gerar Pagamento da Taxa
                     </button>
                 </form>
+            </div>
+        </div>
+
+        <!-- MODAL: SAIBA MAIS SOBRE CARÊNCIA -->
+        <div x-show="showCarencia" x-cloak @click.self="showCarencia = false"
+             class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4"
+             style="display: none;">
+            <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-8">
+                <h3 class="text-xl font-extrabold text-blue-900 mb-4">Como funciona a carência</h3>
+                <div class="text-gray-600 text-sm space-y-3">
+                    <p>Todo novo sócio passa por uma carência de <strong>2 meses</strong> antes de poder utilizar os benefícios e descontos da rede conveniada.</p>
+                    <p>Se preferir começar a usar os benefícios mais rápido, é possível <strong>antecipar os 2 meses de carência</strong>, pagando-os junto com a taxa de associação, no momento do cadastro.</p>
+                    <p><strong>Importante:</strong> essa antecipação só pode ser feita no ato da associação. Caso o sócio opte por não antecipar, ele deverá cumprir os 2 meses de carência normalmente, mantendo as mensalidades em dia nos vencimentos escolhidos, sem possibilidade de antecipar depois.</p>
+                </div>
+                <button @click="showCarencia = false" class="mt-6 w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 rounded-xl transition">OK</button>
+            </div>
+        </div>
+
+        <!-- MODAL: SAIBA MAIS SOBRE O E-MAIL -->
+        <div x-show="showEmailInfo" x-cloak @click.self="showEmailInfo = false"
+             class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4"
+             style="display: none;">
+            <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-8">
+                <h3 class="text-xl font-extrabold text-blue-900 mb-4">Por que pedimos um e-mail</h3>
+                <div class="text-gray-600 text-sm space-y-3">
+                    <p>O e-mail é obrigatório para que a ABAPEC realize uma comunicação mais assertiva e rápida com os sócios, já que não utilizamos mais os serviços dos Correios desde 2022.</p>
+                    <p>Informativos sobre novos convênios, promoções e alterações na operação são sempre enviados por e-mail e/ou WhatsApp.</p>
+                    <p>Caso você não utilize e-mail no dia a dia, pode informar o de um parente ou amigo próximo de confiança.</p>
+                </div>
+                <button @click="showEmailInfo = false" class="mt-6 w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 rounded-xl transition">OK</button>
             </div>
         </div>
     </section>
