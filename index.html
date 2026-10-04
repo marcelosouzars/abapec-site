@@ -281,7 +281,42 @@
         email: '',
         tipoSocio: '',
         diaVencimento: '',
-        endereco: '',
+        cep: '',
+        rua: '',
+        numero: '',
+        complemento: '',
+        bairro: '',
+        cidade: '',
+        uf: '',
+        buscandoCep: false,
+        cepNaoEncontrado: false,
+        maskCEP() {
+            let v = this.cep.replace(/\D/g, '').slice(0, 8);
+            if (v.length > 5) v = v.replace(/(\d{5})(\d)/, '$1-$2');
+            this.cep = v;
+            if (v.replace(/\D/g, '').length === 8) this.buscarCep();
+        },
+        async buscarCep() {
+            const cepLimpo = this.cep.replace(/\D/g, '');
+            this.cepNaoEncontrado = false;
+            this.buscandoCep = true;
+            try {
+                const r = await fetch('https://viacep.com.br/ws/' + cepLimpo + '/json/');
+                const d = await r.json();
+                if (d.erro) {
+                    this.cepNaoEncontrado = true;
+                } else {
+                    this.rua = d.logradouro || '';
+                    this.bairro = d.bairro || '';
+                    this.cidade = d.localidade || '';
+                    this.uf = d.uf || '';
+                }
+            } catch (e) {
+                this.cepNaoEncontrado = true;
+            } finally {
+                this.buscandoCep = false;
+            }
+        },
         maskCPF() {
             let v = this.cpf.replace(/\D/g, '').slice(0, 11);
             v = v.replace(/(\d{3})(\d)/, '$1.$2');
@@ -323,7 +358,13 @@
                         email: this.email,
                         tipoSocio: this.tipoSocio,
                         diaVencimento: Number(this.diaVencimento),
-                        rua: this.endereco,
+                        cep: this.cep.replace(/\D/g, ''),
+                        rua: this.rua,
+                        numero: this.numero,
+                        complemento: this.complemento,
+                        bairro: this.bairro,
+                        cidade: this.cidade,
+                        uf: this.uf,
                     }),
                 });
                 const dados = await resposta.json();
@@ -413,9 +454,43 @@
                         </div>
                     </div>
 
-                    <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-2">Endereço Completo com CEP *</label>
-                        <input type="text" required x-model="endereco" placeholder="Rua, Número, Bairro, CEP e Cidade" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none">
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">CEP *</label>
+                            <input type="text" required x-model="cep" @input="maskCEP()" maxlength="9" inputmode="numeric" placeholder="00000-000" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none">
+                            <p x-show="buscandoCep" class="text-xs text-gray-500 mt-1">Buscando endereço...</p>
+                            <p x-show="cepNaoEncontrado" x-cloak class="text-xs text-red-600 mt-1">CEP não encontrado. Preencha o endereço manualmente.</p>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-bold text-gray-700 mb-2">Rua / Logradouro *</label>
+                            <input type="text" required x-model="rua" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none">
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">Número *</label>
+                            <input type="text" required x-model="numero" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-bold text-gray-700 mb-2">Complemento</label>
+                            <input type="text" x-model="complemento" placeholder="Apto, bloco, casa..." class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none">
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">Bairro *</label>
+                            <input type="text" required x-model="bairro" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">Cidade *</label>
+                            <input type="text" required x-model="cidade" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">UF *</label>
+                            <input type="text" required x-model="uf" maxlength="2" class="w-full p-3 border rounded-lg uppercase focus:ring-2 focus:ring-blue-600 outline-none">
+                        </div>
                     </div>
 
                     <button type="submit" :disabled="enviando" class="w-full bg-blue-700 hover:bg-blue-800 disabled:opacity-60 text-white font-extrabold py-4 rounded-xl shadow-lg transition">
