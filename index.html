@@ -269,10 +269,19 @@
     <!-- SEÇÃO ASSOCIE-SE (FORMULÁRIO PREPARADO PARA INTEGRAÇÃO) -->
     <section id="associe-se" class="py-16 bg-gray-50" x-data="{
         enviado: false,
+        enviando: false,
+        erroEnvio: null,
         showCarencia: false,
         showEmailInfo: false,
         showCpfError: false,
         cpf: '',
+        nomeCompleto: '',
+        dataNascimento: '',
+        telefone: '',
+        email: '',
+        tipoSocio: '',
+        diaVencimento: '',
+        endereco: '',
         maskCPF() {
             let v = this.cpf.replace(/\D/g, '').slice(0, 11);
             v = v.replace(/(\d{3})(\d)/, '$1.$2');
@@ -295,12 +304,39 @@
             if (resto !== parseInt(cpf.charAt(10))) return false;
             return true;
         },
-        submitForm() {
+        async submitForm() {
             if (!this.isValidCPF(this.cpf)) {
                 this.showCpfError = true;
                 return;
             }
-            this.enviado = true;
+            this.erroEnvio = null;
+            this.enviando = true;
+            try {
+                const resposta = await fetch('https://abapec-backend.onrender.com/api/cadastro/socio', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        nomeCompleto: this.nomeCompleto,
+                        cpf: this.cpf,
+                        dataNascimento: this.dataNascimento,
+                        telefone: this.telefone,
+                        email: this.email,
+                        tipoSocio: this.tipoSocio,
+                        diaVencimento: Number(this.diaVencimento),
+                        rua: this.endereco,
+                    }),
+                });
+                const dados = await resposta.json();
+                if (!resposta.ok) {
+                    this.erroEnvio = dados.erro || 'Não foi possível concluir o cadastro. Tente novamente.';
+                    return;
+                }
+                this.enviado = true;
+            } catch (e) {
+                this.erroEnvio = 'Não foi possível conectar ao servidor. Verifique sua internet e tente novamente.';
+            } finally {
+                this.enviando = false;
+            }
         }
     }">
         <div class="max-w-4xl mx-auto px-4">
@@ -308,7 +344,7 @@
                 <div class="text-center mb-8">
                     <span class="text-blue-600 font-bold uppercase tracking-wider text-sm">Faça parte hoje mesmo</span>
                     <h2 class="text-3xl font-extrabold text-gray-900 mt-2">Formulário de Associação 100% Online</h2>
-                    <p class="text-gray-500 text-sm mt-1">Taxa de associação: R$ 30,00. Cadastro liberado via Pix em até 2 horas!</p>
+                    <p class="text-gray-500 text-sm mt-1">Taxa de associação: R$ 30,00. Confirme seu e-mail e pague a taxa pra liberar seu acesso!</p>
                     <p class="text-gray-500 text-sm mt-1">
                         <strong class="text-gray-700">Carência:</strong> 2 meses (podendo ser antecipada junto com a taxa de associação)
                         <button type="button" @click="showCarencia = true" class="text-blue-600 font-bold underline hover:text-blue-800 ml-1">Saiba mais</button>
@@ -317,14 +353,18 @@
 
                 <div x-show="enviado" class="bg-green-100 border border-green-400 text-green-700 px-6 py-4 rounded-xl text-center mb-6">
                     <h4 class="font-bold text-lg">Cadastro recebido com sucesso!</h4>
-                    <p class="text-sm mt-1">Seu pré-cadastro ficou com status <strong>PENDENTE</strong>. Enviamos o link de pagamento da taxa para o seu WhatsApp/E-mail para liberação do acesso.</p>
+                    <p class="text-sm mt-1">Enviamos um código de confirmação para o seu e-mail. Acesse o <a href="https://abapec-web.onrender.com/" class="underline font-bold">portal do sócio</a>, informe seu CPF e o código recebido para confirmar o cadastro e gerar o link de pagamento da taxa de associação.</p>
+                </div>
+
+                <div x-show="erroEnvio" x-cloak class="bg-red-100 border border-red-400 text-red-700 px-6 py-4 rounded-xl text-center mb-6">
+                    <p class="text-sm font-bold" x-text="erroEnvio"></p>
                 </div>
 
                 <form x-show="!enviado" @submit.prevent="submitForm()" class="space-y-6">
                     <div class="grid md:grid-cols-2 gap-6">
                         <div>
                             <label class="block text-sm font-bold text-gray-700 mb-2">Nome Completo *</label>
-                            <input type="text" required class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none">
+                            <input type="text" required x-model="nomeCompleto" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none">
                         </div>
                         <div>
                             <label class="block text-sm font-bold text-gray-700 mb-2">CPF *</label>
@@ -335,15 +375,15 @@
                     <div class="grid md:grid-cols-3 gap-6">
                         <div>
                             <label class="block text-sm font-bold text-gray-700 mb-2">Data de Nascimento *</label>
-                            <input type="date" required class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none">
+                            <input type="date" required x-model="dataNascimento" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none">
                         </div>
                         <div>
                             <label class="block text-sm font-bold text-gray-700 mb-2">WhatsApp / Telefone *</label>
-                            <input type="tel" required placeholder="(51) 99999-9999" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none">
+                            <input type="tel" required x-model="telefone" placeholder="(51) 99999-9999" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none">
                         </div>
                         <div>
                             <label class="block text-sm font-bold text-gray-700 mb-2">Tipo de Sócio *</label>
-                            <select required class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none bg-white">
+                            <select required x-model="tipoSocio" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none bg-white">
                                 <option value="">Selecione...</option>
                                 <option value="aposentado">Aposentado</option>
                                 <option value="pensionista">Pensionista</option>
@@ -352,22 +392,35 @@
                         </div>
                     </div>
 
-                    <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-2">
-                            E-mail *
-                            <button type="button" @click="showEmailInfo = true" class="text-blue-600 font-bold underline hover:text-blue-800 normal-case ml-1">Saiba mais</button>
-                        </label>
-                        <p class="text-xs text-gray-500 mb-2">Pode ser o seu e-mail ou o de um parente / amigo próximo.</p>
-                        <input type="email" required class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">
+                                E-mail *
+                                <button type="button" @click="showEmailInfo = true" class="text-blue-600 font-bold underline hover:text-blue-800 normal-case ml-1">Saiba mais</button>
+                            </label>
+                            <p class="text-xs text-gray-500 mb-2">Pode ser o seu e-mail ou o de um parente / amigo próximo.</p>
+                            <input type="email" required x-model="email" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">Dia de vencimento preferido *</label>
+                            <p class="text-xs text-gray-500 mb-2">Dia do mês em que suas próximas mensalidades vão vencer.</p>
+                            <select required x-model="diaVencimento" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none bg-white">
+                                <option value="">Selecione...</option>
+                                <option value="10">Dia 10</option>
+                                <option value="20">Dia 20</option>
+                                <option value="30">Dia 30</option>
+                            </select>
+                        </div>
                     </div>
 
                     <div>
                         <label class="block text-sm font-bold text-gray-700 mb-2">Endereço Completo com CEP *</label>
-                        <input type="text" required placeholder="Rua, Número, Bairro, CEP e Cidade" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none">
+                        <input type="text" required x-model="endereco" placeholder="Rua, Número, Bairro, CEP e Cidade" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none">
                     </div>
 
-                    <button type="submit" class="w-full bg-blue-700 hover:bg-blue-800 text-white font-extrabold py-4 rounded-xl shadow-lg transition">
-                        Finalizar e Gerar Pagamento da Taxa
+                    <button type="submit" :disabled="enviando" class="w-full bg-blue-700 hover:bg-blue-800 disabled:opacity-60 text-white font-extrabold py-4 rounded-xl shadow-lg transition">
+                        <span x-show="!enviando">Finalizar Cadastro</span>
+                        <span x-show="enviando">Enviando...</span>
                     </button>
                 </form>
             </div>
