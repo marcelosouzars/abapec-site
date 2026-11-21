@@ -282,6 +282,7 @@
         tipoSocio: '',
         diaVencimento: '',
         sexo: '',
+        emailEnviado: '',
         antecipar: '',
         valores: { taxaAssociacao: 30, mensalidade: null, meses: ['', ''], totalAntecipado: null },
         brl(n) { return (n === null || n === undefined) ? '...' : Number(n).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }); },
@@ -388,10 +389,15 @@
                     this.erroEnvio = dados.erro || 'Não foi possível concluir o cadastro. Tente novamente.';
                     return;
                 }
+                this.emailEnviado = this.email;
                 this.enviado = true;
-                this.$nextTick(() => {
-                    this.$refs.msgSucesso.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                });
+                // O formulário some e a página encolhe; espera o layout assentar
+                // e leva a tela até o aviso de sucesso (e não pro mapa, no fim).
+                this.$nextTick(() => setTimeout(() => {
+                    const el = this.$refs.msgSucesso;
+                    const topo = el.getBoundingClientRect().top + window.pageYOffset - 110;
+                    window.scrollTo({ top: topo, behavior: 'smooth' });
+                }, 150));
             } catch (e) {
                 this.erroEnvio = 'Não foi possível conectar ao servidor. Verifique sua internet e tente novamente.';
             } finally {
@@ -419,6 +425,11 @@
                 <div x-show="enviado" x-ref="msgSucesso" x-cloak class="bg-green-100 border border-green-400 text-green-700 px-6 py-8 rounded-xl text-center mb-6 scroll-mt-28">
                     <h4 class="font-extrabold text-2xl">Cadastro recebido com sucesso!</h4>
                     <p class="text-base mt-2">Falta pouco! Para concluir e receber o boleto/Pix da taxa de associação, siga os passos:</p>
+                    <div class="mt-4 mx-auto max-w-md bg-white border-2 border-yellow-400 rounded-xl px-4 py-3 text-gray-900">
+                        <p class="text-sm">O código de 6 números será enviado para:</p>
+                        <p class="font-extrabold text-lg break-all" x-text="emailEnviado"></p>
+                        <p class="text-xs text-red-700 font-bold mt-1">Confira se está certo. Se o e-mail estiver errado, fale com a gente pelo WhatsApp (51) 92001-4088 para corrigir.</p>
+                    </div>
                     <ol class="text-left text-base mt-4 mx-auto max-w-md space-y-2 list-decimal list-inside">
                         <li>Clique no botão abaixo (ou no botão do e-mail que enviamos para você).</li>
                         <li>Digite o seu <strong>CPF</strong>.</li>
