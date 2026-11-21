@@ -267,7 +267,7 @@
     </section>
 
     <!-- SEÇÃO ASSOCIE-SE (FORMULÁRIO PREPARADO PARA INTEGRAÇÃO) -->
-    <section id="associe-se" class="py-16 bg-gray-50" x-data="{
+    <section id="associe-se" class="py-16 bg-gray-50" x-init="carregarValores()" x-data="{
         enviado: false,
         enviando: false,
         erroEnvio: null,
@@ -281,6 +281,16 @@
         email: '',
         tipoSocio: '',
         diaVencimento: '',
+        sexo: '',
+        antecipar: '',
+        valores: { taxaAssociacao: 30, mensalidade: null, meses: ['', ''], totalAntecipado: null },
+        brl(n) { return (n === null || n === undefined) ? '...' : Number(n).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }); },
+        async carregarValores() {
+            try {
+                const r = await fetch('https://abapec-backend.onrender.com/api/cadastro/valores');
+                if (r.ok) this.valores = await r.json();
+            } catch (e) { /* mantém os valores padrão da tela */ }
+        },
         cep: '',
         rua: '',
         numero: '',
@@ -344,6 +354,10 @@
                 this.showCpfError = true;
                 return;
             }
+            if (!this.antecipar) {
+                this.erroEnvio = 'Escolha como deseja cumprir a carência (caixa amarela acima do botão Finalizar).';
+                return;
+            }
             this.erroEnvio = null;
             this.enviando = true;
             try {
@@ -358,6 +372,8 @@
                         email: this.email,
                         tipoSocio: this.tipoSocio,
                         diaVencimento: Number(this.diaVencimento),
+                        sexo: this.sexo || null,
+                        optouAntecipar: this.antecipar === 'sim',
                         cep: this.cep.replace(/\D/g, ''),
                         rua: this.rua,
                         numero: this.numero,
@@ -388,7 +404,12 @@
                 <div class="text-center mb-8">
                     <span class="text-blue-600 font-bold uppercase tracking-wider text-sm">Faça parte hoje mesmo</span>
                     <h2 class="text-3xl font-extrabold text-gray-900 mt-2">Formulário de Associação 100% Online</h2>
-                    <p class="text-gray-500 text-sm mt-1">Taxa de associação: R$ 30,00. Confirme seu e-mail e pague a taxa pra liberar seu acesso!</p>
+                    <p class="text-gray-700 text-base mt-2">Taxa de associação: <strong x-text="brl(valores.taxaAssociacao)"></strong> &nbsp;•&nbsp; Mensalidade: <strong x-text="brl(valores.mensalidade)"></strong></p>
+                    <p class="text-gray-500 text-sm mt-1">Confirme seu e-mail e pague a taxa pra liberar seu acesso!</p>
+                    <div class="mt-4 mx-auto max-w-2xl bg-yellow-50 border-2 border-yellow-400 text-yellow-900 rounded-xl px-5 py-4 text-left">
+                        <p class="font-extrabold text-lg">⚠️ Atenção: carência de 2 meses</p>
+                        <p class="text-base mt-1">Todo novo sócio precisa <strong>completar 2 meses de carência</strong> antes de poder usar o plano de benefícios. Você escolhe abaixo, no formulário, como prefere cumprir.</p>
+                    </div>
                     <p class="text-gray-500 text-sm mt-1">
                         <strong class="text-gray-700">Carência:</strong> 2 meses (podendo ser antecipada junto com a taxa de associação)
                         <button type="button" @click="showCarencia = true" class="text-blue-600 font-bold underline hover:text-blue-800 ml-1">Saiba mais</button>
@@ -403,7 +424,7 @@
                         <li>Digite o seu <strong>CPF</strong>.</li>
                         <li>Digite o <strong>código de 6 números</strong> que chegar no seu e-mail.</li>
                         <li>Crie uma <strong>senha de 6 números</strong>.</li>
-                        <li>Pronto! O link de pagamento da taxa (R$ 30,00) aparece na tela.</li>
+                        <li>Pronto! O link de pagamento aparece na tela.</li>
                     </ol>
                     <a href="https://abapec-web.onrender.com/?concluir=1" class="inline-block mt-6 bg-blue-700 hover:bg-blue-800 text-white font-extrabold text-lg px-8 py-4 rounded-xl shadow-lg transition">Concluir meu cadastro agora</a>
                     <p class="text-sm mt-4">Não encontrou o e-mail? Olhe também a caixa de spam. Se precisar de ajuda, fale com a gente pelo WhatsApp (51) 92001-4088.</p>
@@ -426,6 +447,15 @@
                     </div>
 
                     <div class="grid md:grid-cols-3 gap-6">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">Sexo *</label>
+                            <select required x-model="sexo" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none bg-white">
+                                <option value="">Selecione...</option>
+                                <option value="masculino">Masculino</option>
+                                <option value="feminino">Feminino</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
                         <div>
                             <label class="block text-sm font-bold text-gray-700 mb-2">Data de Nascimento *</label>
                             <input type="date" required x-model="dataNascimento" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 outline-none">
@@ -503,6 +533,26 @@
                             <label class="block text-sm font-bold text-gray-700 mb-2">UF *</label>
                             <input type="text" required x-model="uf" maxlength="2" class="w-full p-3 border rounded-lg uppercase focus:ring-2 focus:ring-blue-600 outline-none">
                         </div>
+                    </div>
+
+                    <div class="bg-yellow-50 border-2 border-yellow-400 rounded-xl p-5">
+                        <p class="font-extrabold text-yellow-900 text-lg">Como você quer cumprir os 2 meses de carência? *</p>
+                        <p class="text-sm text-yellow-900 mt-1">O plano de benefícios só é liberado depois da carência. Escolha uma opção:</p>
+                        <label class="flex items-start gap-3 mt-4 p-3 bg-white rounded-lg border cursor-pointer" :class="antecipar === 'nao' ? 'border-blue-600 ring-2 ring-blue-600' : 'border-gray-300'">
+                            <input type="radio" name="antecipar" value="nao" x-model="antecipar" class="mt-1">
+                            <span>
+                                <strong>Pagar só a taxa de associação agora</strong> (<span x-text="brl(valores.taxaAssociacao)"></span>)<br>
+                                <span class="text-sm text-gray-600">Depois você paga as 2 mensalidades normalmente (<span x-text="brl(valores.mensalidade)"></span> cada). Os benefícios são liberados quando as 2 forem pagas.</span>
+                            </span>
+                        </label>
+                        <label class="flex items-start gap-3 mt-3 p-3 bg-white rounded-lg border cursor-pointer" :class="antecipar === 'sim' ? 'border-green-600 ring-2 ring-green-600' : 'border-gray-300'">
+                            <input type="radio" name="antecipar" value="sim" x-model="antecipar" class="mt-1">
+                            <span>
+                                <strong>Antecipar a carência: pagar tudo agora</strong> — total <strong x-text="brl(valores.totalAntecipado)"></strong><br>
+                                <span class="text-sm text-gray-600">Taxa (<span x-text="brl(valores.taxaAssociacao)"></span>) + mensalidades de <strong x-text="valores.meses[0]"></strong> e <strong x-text="valores.meses[1]"></strong> (<span x-text="brl(valores.mensalidade)"></span> cada). Seu cadastro é liberado assim que o pagamento for confirmado.</span><br>
+                                <span class="text-xs text-red-700 font-bold">A antecipação só pode ser feita agora, no ato da associação.</span>
+                            </span>
+                        </label>
                     </div>
 
                     <button type="submit" :disabled="enviando" class="w-full bg-blue-700 hover:bg-blue-800 disabled:opacity-60 text-white font-extrabold py-4 rounded-xl shadow-lg transition">
